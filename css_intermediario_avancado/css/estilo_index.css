@@ -1,0 +1,92 @@
+/*BARRA VERTICAL*/
+ul#vertical{
+    margin: 0;
+    padding: 0;
+    list-style-type: none;
+}
+
+ul#vertical a{
+    width: 200px;
+    height: 40px;
+    display: block;
+    color: #000;
+    text-decoration: none;
+    text-indent: 40px;
+    line-height: 40px;
+    background: #F7b600 url("../static/barra_vertical/menu.png") no-repeat left bottom;
+}
+
+ul#vertical a:hover{
+    background-position: right bottom;
+    background-color: #F99200;
+    color: #FFF;
+}
+
+/*BARRA HORIZONTAL*/
+ul#horizontal{
+    margin: 0;
+    padding: 0;
+    list-style: none;
+    width: 200px;
+    background: #159CB0 url("../static/barra_horizontal/fundo-horizontal.png") repeat-x;
+    float: left;
+}
+
+ul#horizontal li{
+    text-indent: 10px;
+    float: left;
+}
+
+ul#horizontal a{
+    display: block;
+    padding: 0 2em;
+    line-height: 3em;
+    text-decoration: none;
+    color: #FFF;
+    background: url("../static/barra_horizontal/divisor.png") repeat-y left top;
+}
+
+ul#horizontal a:hover{
+    color: #085662;
+    background: #44CADE;
+}
+ul#horizontal .primeiro a {
+    background: none;
+}
+
+/* BARRA DE NAVEGACAO POR ABAS */
+div#aba{
+    font-family: "Trebuchet MS", Helvetica, sans-serif;
+}
+
+ul#abas{
+    margin: 0;
+    padding: 0;
+    list-style: none;
+}
+
+ul#abas li{
+    text-align: center;
+    width: 200px;
+    float: left;
+    background: url("../static/navegacao_abas/aba-direita.png") no-repeat top right;
+}
+
+ul#abas li a{
+    display: block;
+    padding: 0 2em;
+    line-height: 3em;
+    text-decoration: none;
+    background: url("../static/navegacao_abas/aba-esquerda.png") no-repeat top left;
+    color: #FFF;
+}
+
+ul#abas a:hover{
+    color: #894A1F;
+}
+ul#atual{
+    background: url("../static/navegacao_abas/aba-direita-atual.png") no-repeat top right;
+}
+ul#atual a{
+    background: url("../static/navegacao_abas/aba-esquerda-atual.png") no-repeat top left;
+}
