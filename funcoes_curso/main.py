@@ -97,6 +97,33 @@ multiplicar = lambda x, y: x * y
 try:
     num1 = float(input('Digite o multiplicador: '))
     num2 = float(input('Digite o multiplicando: '))
-    print(f'O resultado da multilicacao é : {multiplicar(num1, num2)}')
+    print(f'O resultado da multilicacao de {num1} e {num2} é : {multiplicar(num1, num2)}')
 except Exception as err:
     print(err)
+
+# Desafio 31
+print('\nDesafio 31')
+par_ou_impar = lambda x: 'Par' if x % 2 == 0 else 'Impar'
+try:
+    user_number = int(input('Digite um numero: '))
+    print(f'O número {user_number} é {par_ou_impar(user_number)}.')
+except Exception as err:
+    print(err)
+
+# Desafio 32
+print('\nDesafio 32')
+lista_numeros = [1, 2, 3, 4, 5, 6]
+ao_quadrado = map(lambda x: x ** 2, lista_numeros)
+print(f'Os quadrados dos numeros {lista_numeros} são {list(ao_quadrado)}')
+
+# Desafio 32 versao for
+print('\nDesafio 32 versao for')
+
+list_num = [1, 2, 3, 4, 5, 6]
+quadrado = lambda x: x ** 2
+
+resultados = []
+for i in list_num:
+    resultados.append(quadrado(i))
+
+print(f'Os quadrados dos numeros {list_num} são {resultados}')
