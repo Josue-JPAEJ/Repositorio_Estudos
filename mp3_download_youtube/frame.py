@@ -11,6 +11,7 @@
 from PyQt5 import QtCore, QtGui, QtWidgets
 from pytube import YouTube
 import os
+import messagebox as msg
 
 
 class Ui_MainWindow(object):
@@ -127,11 +128,11 @@ class Ui_MainWindow(object):
         nome_arquivo = self.txt_nome_arquivo.text()
 
         if len(url) <= 0:
-            QtWidgets.QMessageBox.("Erro", "Insira um link do youtube para baixar!")
+            msg.show_critical_messagebox("Insira um link do youtube para baixar!")
             self.txt_link.setFocus()
             return
         elif len(nome_arquivo) <= 0:
-            QtWidgets.QMessageBox("Erro", "Digite o nome do arquivo!")
+            msg.show_critical_messagebox("Digite o nome do arquivo!")
             self.txt_nome_arquivo.setFocus()
             return
 
@@ -150,11 +151,17 @@ class Ui_MainWindow(object):
                 os.rename(out_file, new_file)
 
             else:
-                QtWidgets.QMessageBox.about(self, "Erro", "Selecione o tipo de arquivo [mp3 - mp4]!")
+                msg.show_critical_messagebox("Selecione o tipo de arquivo [mp3 - mp4]!")
+                self.radio_mp3.setFocus()
                 return
 
-            QtWidgets.QMessageBox.about(self, "Sucesso", "Download concluído com sucesso!")
+            msg.show_info_messagebox("Download concluído com sucesso!")
+            self.txt_link.setText('')
+            self.txt_nome_arquivo.setText('')
+            self.txt_link.setFocus()
+
         except Exception as err:
+            msg.show_critical_messagebox(err)
             print(err)
 
 
