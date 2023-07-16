@@ -162,7 +162,6 @@ class Ui_MainWindow(object):
 
         except Exception as err:
             msg.show_critical_messagebox(err)
-            print(err)
 
 
 if __name__ == "__main__":
