@@ -9,10 +9,10 @@
 
 
 from PyQt5 import QtCore, QtGui, QtWidgets
-from pytube import YouTube
+import pytube
 import os
+import sys
 import messagebox as msg
-
 
 class Ui_MainWindow(object):
     def setupUi(self, MainWindow):
@@ -41,7 +41,7 @@ class Ui_MainWindow(object):
         self.label_3.setMinimumSize(QtCore.QSize(300, 150))
         self.label_3.setMaximumSize(QtCore.QSize(700, 300))
         self.label_3.setText("")
-        self.label_3.setPixmap(QtGui.QPixmap("../../../../Conteudo_Python/mp3_download_youtube/youtube_logo.png"))
+        self.label_3.setPixmap(QtGui.QPixmap("youtube_logo.png"))
         self.label_3.setScaledContents(True)
         self.label_3.setObjectName("label_3")
         self.verticalLayout_2.addWidget(self.label_3)
@@ -137,7 +137,7 @@ class Ui_MainWindow(object):
             return
 
         try:
-            yt = YouTube(url)
+            yt = pytube.YouTube(url)
             nome_arquivo = 'C:\\Users\\USER\\Music\\Hinos\\' + nome_arquivo
             if self.radio_mp4.isChecked():
                 video = yt.streams.get_highest_resolution()
@@ -165,7 +165,6 @@ class Ui_MainWindow(object):
 
 
 if __name__ == "__main__":
-    import sys
     app = QtWidgets.QApplication(sys.argv)
     MainWindow = QtWidgets.QMainWindow()
     ui = Ui_MainWindow()
