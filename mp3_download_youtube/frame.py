@@ -138,7 +138,6 @@ class Ui_MainWindow(object):
 
         try:
             yt = pytube.YouTube(url)
-            nome_arquivo = 'C:\\Users\\USER\\Music\\Hinos\\' + nome_arquivo
             if self.radio_mp4.isChecked():
                 video = yt.streams.get_highest_resolution()
                 video.download(filename=nome_arquivo)
