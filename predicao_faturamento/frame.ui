@@ -15,21 +15,6 @@
   </property>
   <widget class="QWidget" name="centralwidget">
    <layout class="QGridLayout" name="gridLayout">
-    <item row="0" column="0">
-     <widget class="QLabel" name="lb_predicaoFaturamento">
-      <property name="font">
-       <font>
-        <family>MS Sans Serif</family>
-        <pointsize>23</pointsize>
-        <weight>75</weight>
-        <bold>true</bold>
-       </font>
-      </property>
-      <property name="text">
-       <string>Predição de faturamento</string>
-      </property>
-     </widget>
-    </item>
     <item row="0" column="1">
      <layout class="QVBoxLayout" name="verticalLayout_2">
       <item>
@@ -68,44 +53,6 @@
        </widget>
       </item>
      </layout>
-    </item>
-    <item row="0" column="2">
-     <widget class="QSpinBox" name="sp_quantidadeLinhas">
-      <property name="minimumSize">
-       <size>
-        <width>51</width>
-        <height>31</height>
-       </size>
-      </property>
-      <property name="maximumSize">
-       <size>
-        <width>51</width>
-        <height>31</height>
-       </size>
-      </property>
-     </widget>
-    </item>
-    <item row="0" column="3">
-     <widget class="QPushButton" name="btn_arquivo">
-      <property name="minimumSize">
-       <size>
-        <width>111</width>
-        <height>41</height>
-       </size>
-      </property>
-      <property name="maximumSize">
-       <size>
-        <width>111</width>
-        <height>41</height>
-       </size>
-      </property>
-      <property name="text">
-       <string>Arquivo</string>
-      </property>
-     </widget>
-    </item>
-    <item row="1" column="0" colspan="3">
-     <widget class="QTableView" name="tb_faturamento"/>
     </item>
     <item row="1" column="3">
      <layout class="QVBoxLayout" name="verticalLayout_3">
@@ -224,9 +171,98 @@
       </item>
      </layout>
     </item>
+    <item row="0" column="2">
+     <widget class="QSpinBox" name="spb_colunas">
+      <property name="minimumSize">
+       <size>
+        <width>51</width>
+        <height>31</height>
+       </size>
+      </property>
+      <property name="maximumSize">
+       <size>
+        <width>51</width>
+        <height>31</height>
+       </size>
+      </property>
+     </widget>
+    </item>
+    <item row="0" column="0">
+     <widget class="QLabel" name="lb_predicaoFaturamento">
+      <property name="font">
+       <font>
+        <family>MS Sans Serif</family>
+        <pointsize>23</pointsize>
+        <weight>75</weight>
+        <bold>true</bold>
+       </font>
+      </property>
+      <property name="text">
+       <string>Predição de faturamento</string>
+      </property>
+     </widget>
+    </item>
+    <item row="0" column="3">
+     <widget class="QPushButton" name="btn_arquivo">
+      <property name="minimumSize">
+       <size>
+        <width>111</width>
+        <height>41</height>
+       </size>
+      </property>
+      <property name="maximumSize">
+       <size>
+        <width>111</width>
+        <height>41</height>
+       </size>
+      </property>
+      <property name="text">
+       <string>Arquivo</string>
+      </property>
+     </widget>
+    </item>
+    <item row="1" column="0" colspan="3">
+     <widget class="QTableWidget" name="tbw_faturamento">
+      <property name="minimumSize">
+       <size>
+        <width>300</width>
+        <height>0</height>
+       </size>
+      </property>
+      <column>
+       <property name="text">
+        <string>New Column</string>
+       </property>
+      </column>
+      <column>
+       <property name="text">
+        <string>Ano</string>
+       </property>
+      </column>
+      <column>
+       <property name="text">
+        <string>Faturamento</string>
+       </property>
+      </column>
+     </widget>
+    </item>
    </layout>
   </widget>
  </widget>
+ <tabstops>
+  <tabstop>spb_colunas</tabstop>
+  <tabstop>btn_arquivo</tabstop>
+  <tabstop>rb_media</tabstop>
+  <tabstop>rb_desvioPadrao</tabstop>
+  <tabstop>rb_mediaPonderada</tabstop>
+  <tabstop>rb_segregacaoDados</tabstop>
+  <tabstop>rb_regressaoLinear</tabstop>
+  <tabstop>rb_seriesTemporais</tabstop>
+  <tabstop>btn_predizer</tabstop>
+  <tabstop>tbw_faturamento</tabstop>
+  <tabstop>txt_totalFaturado</tabstop>
+  <tabstop>txt_predicao</tabstop>
+ </tabstops>
  <resources/>
  <connections/>
 </ui>
