@@ -150,7 +150,7 @@ class Ui_MainWindow(object):
         item = self.tbw_faturamento.horizontalHeaderItem(2)
         item.setText(_translate("MainWindow", "Faturamento"))
         self.btn_arquivo.clicked.connect(self.openFile)
-        # self.btn_predizer.clicked.connect(self.predicao)
+        self.btn_predizer.clicked.connect(self.predicao)
 
     def openFile(self):
         # localiza o caminho do arquivo
@@ -158,12 +158,13 @@ class Ui_MainWindow(object):
         path = askopenfilename()
         self.all_data = pd.read_csv(path)
 
-        # Carrega o arquivo na tabela tb_faturamento
+        # Carrega o arquivo na tabela tbw_faturamento
         numColumn = self.spb_colunas.value()
         if numColumn == 0:
             numRows = len(self.all_data.index)
         else:
             numRows = numColumn
+
         self.tbw_faturamento.setColumnCount(len(self.all_data.columns))
         self.tbw_faturamento.setRowCount(numRows)
         self.tbw_faturamento.setHorizontalHeaderLabels(self.all_data)
@@ -176,8 +177,45 @@ class Ui_MainWindow(object):
         self.tbw_faturamento.resizeRowsToContents()
 
         # soma do faturamento
-        soma_faturamento = str(f"R$ {sum(self.all_data['Faturamento'])}")
+        soma_faturamento = str(f"R$ {round(sum(self.all_data['Faturamento']), 2)}")
         self.txt_totalFaturado.setText(soma_faturamento)
+
+    def predicao(self):
+        df = self.all_data
+
+        # media
+        media = df['Faturamento'].mean()
+        if self.rb_media.isChecked():
+            predicao = 'Nos próximos meses será faturado R$ ' + str('%0.02f' % media) + '/mês em media.'
+        elif self.rb_desvioPadrao.isChecked():
+            desvio_padrao = df['Faturamento'].std()
+            coe_var = (desvio_padrao / media) * 100
+            predicao = 'Predição de R$ ' + str('%0.02f' % media) + '/mês podendo variar em torno de ' + str('%0.02f' % coe_var) + '%.'
+        elif self.rb_mediaPonderada.isChecked():
+            lista = np.transpose((np.array([df['Faturamento'].tail(), np.arange(1, 6)])))
+            df_ult = pd.DataFrame(lista, columns=['Ultimos', 'Pesos'])
+            df_ult['Ponderado'] = df_ult['Ultimos'] * df_ult['Pesos']
+            media_ponderada = df_ult['Ponderado'].sum() / df_ult['Pesos'].sum()
+            predicao = 'Predição ponderada de R$ ' + str('%0.02f' % media_ponderada) + ' para os próximos meses.'
+        elif self.rb_segregacaoDados.isChecked():
+            df_janeiro = df.loc[df['Mes'] == 1]
+            media_segregacao = df_janeiro['Faturamento'].mean()
+            predicao = 'Predição segregada de R$ ' + str('%0.02f' % media_segregacao) + ' para janeiro.'
+        elif self.rb_regressaoLinear.isChecked():
+            coefficients = np.polyfit(df.index, df['Faturamento'], 1)
+            a = coefficients[0]
+            b = coefficients[1]
+            jan_reta = a * 36 + b
+            predicao = 'Predição por regressão de R$ ' + str('%0.02f' % jan_reta) + ' para janeiro.'
+        elif self.rb_seriesTemporais.isChecked():
+            model = AutoReg(df['Faturamento'], lags=1)
+            model_fit = model.fit()
+            yhat = model_fit.predict(len(df['Faturamento']), len(df['Faturamento']) + 2)
+            pred = np.array(yhat)
+            predicao = 'Predição por série temporal de ' \
+                       'R$ ' + str('%0.02f' % pred[0]) + ' para janeiro e ' \
+                                                         'R$ ' + str('%0.02f' % pred[1]) + ' para fevereiro. '
+        self.txt_predicao.setText(predicao)
 
 
 if __name__ == "__main__":
