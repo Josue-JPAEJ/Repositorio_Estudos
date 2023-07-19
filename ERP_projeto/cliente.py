@@ -128,10 +128,10 @@ class Ui_formCliente(object):
     ## Consulta tabelaCliente por nome ##
     def pesquisarCliente(self):
         mydb = mysql.connector.connect(
-            host = host,
-            user = user,
-            password = password,
-            database = database
+            host=host,
+            user=user,
+            password=password,
+            database=database
         )
 
         mycursor = mydb.cursor()
@@ -160,10 +160,10 @@ class Ui_formCliente(object):
     ## Pesquisar tabelaCliente Geral##
     def pesquisarGeral(self):
         mydb = mysql.connector.connect(
-            host = host,
-            user = user,
-            password = password,
-            database = database
+            host=host,
+            user=user,
+            password=password,
+            database=database
         )
 
         mycursor = mydb.cursor()
@@ -262,9 +262,6 @@ class Ui_formCliente(object):
         self.tb_cliente.resizeColumnsToContents()
         self.tb_cliente.resizeRowsToContents()
         mycursor.close()
-
-
-
 
 
 ### Imagens Sistema ###
