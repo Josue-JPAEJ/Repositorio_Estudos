@@ -1,0 +1,8 @@
+copie o arquivo 'Arredondar Peso XML.exe'
+cole na pasta em que contem os arquivos xml que deseja modificar
+execute o arquivo 'Arredondar Peso XML.exe'
+
+o sistema 'Arredondar Peso XML.exe' vai percorrer por cada arquivo xml da pasta
+o peso bruto e o peso liquido serão arredondados
+será criada uma pasta no local com o nome 'xml dia-mes-ano'
+todos os arquivos modificados serão exportados para a pasta criada

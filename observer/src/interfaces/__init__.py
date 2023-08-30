@@ -1,1 +1,0 @@
-from .observador import Observador
